@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <title>Detailiving Cali</title>
-    </head>
-    <body>
-        <h1>Nueva cotización</h1>
-        <form>
-            <label> Nombre del cliente</label>
-            <input type="text">
-            
-            <label>Correo</label>
+
+<head>
+    <meta charset="utf-8">
+    <title>Detailiving Cali</title>
+</head>
+
+<body>
+    <h1>Nueva cotización</h1>
+    <form>
+        <label> Nombre del cliente</label>
+        <input type="text" id ="nombre">
+
+        <label>Correo</label>
         <input type="email">
 
         <label>tel</label>
-            <input type="telefono">
-           
-            <label>Servicios</label>
+        <input type="tel">
 
-            <select>
-                <option> lavado de mueble
-                    <option> colchon </option>
-                <option> sillas del comedor</option>
-             </select>
-             <button>Guardar </button>
-        </form>
-    </body>
-    </html>
+        <label>Servicios</label>
+
+        <select>
+            <option> lavado de mueble </option>
+            <option> colchon </option>
+            <option> sillas del comedor</option>
+
+        </select>
+        <button>Guardar </button>
+    </form>
+    <p id="resultado"> </p>
+    <script>
+        const formulario = document.querySelector("form");
+        formulario.addEventListener("submit",function (evento){
+
+        });
+    </script>
+</body>
+
+</html>
