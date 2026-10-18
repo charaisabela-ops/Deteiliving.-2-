@@ -8,31 +8,37 @@
 
 <body>
     <h1>Nueva cotización</h1>
+
     <form>
-        <label> Nombre del cliente</label>
-        <input type="text" id ="nombre">
+        <label>Nombre del cliente</label>
+        <input type="text" id="nombre">
 
         <label>Correo</label>
-        <input type="email">
+        <input type="email" id="email">
 
-        <label>tel</label>
-        <input type="tel">
+        <label>Teléfono</label>
+        <input type="tel" id="telefono">
 
         <label>Servicios</label>
-
-        <select>
-            <option> lavado de mueble </option>
-            <option> colchon </option>
-            <option> sillas del comedor</option>
-
+        <select id="servicio">
+            <option>Lavado de mueble</option>
+            <option>Colchón</option>
+            <option>Sillas del comedor</option>
         </select>
-        <button>Guardar </button>
+
+        <button type="submit">Guardar</button>
     </form>
-    <p id="resultado"> </p>
+
+    <p id="resultado"></p>
+
     <script>
         const formulario = document.querySelector("form");
-        formulario.addEventListener("submit",function (evento){
 
+        formulario.addEventListener("submit", function (evento) {
+            evento.preventDefault();
+            const nombre = document.querySelector("#nombre").value;
+            const email = document.querySelector("#email").value;
+            document.querySelector("#resultado").textContent = "Cotización creada para " + nombre + " (" + email + ")";
         });
     </script>
 </body>
