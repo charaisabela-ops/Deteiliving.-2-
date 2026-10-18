@@ -16,8 +16,8 @@
         <label>Correo</label>
         <input type="email" id="email">
 
-        <label>Teléfono</label>
-        <input type="tel" id="telefono">
+        <label>Tel</label>
+        <input type="tel" id="tel">
 
         <label>Servicios</label>
         <select id="servicio">
@@ -31,14 +31,20 @@
 
     <p id="resultado"></p>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
+        const db = supabase.createClient("https://wohifbcjbnjxypmhqgzl.supabase.co", "sb_publishable_wbWFHCm5US-SisFXMgiR1Q_74zfmUHX");
         const formulario = document.querySelector("form");
 
-        formulario.addEventListener("submit", function (evento) {
+        formulario.addEventListener("submit", async function (evento) {
             evento.preventDefault();
             const nombre = document.querySelector("#nombre").value;
             const email = document.querySelector("#email").value;
-            document.querySelector("#resultado").textContent = "Cotización creada para " + nombre + " (" + email + ")";
+            const tel = document.querySelector("#tel").value;
+            document.querySelector("#resultado").textContent = "Cotización creada para " + nombre + " (" + email + ", " + tel + ")";
+
+            const respuesta = await db.from("clientes").insert({ nombre: nombre, correo: email, telefono: tel });
+
         });
     </script>
 </body>
