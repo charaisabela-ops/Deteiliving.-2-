@@ -41,10 +41,12 @@
             const nombre = document.querySelector("#nombre").value;
             const email = document.querySelector("#email").value;
             const tel = document.querySelector("#tel").value;
-            document.querySelector("#resultado").textContent = "Cotización creada para " + nombre + " (" + email + ", " + tel + ")";
 
             const respuesta = await db.from("clientes").insert({ nombre: nombre, correo: email, telefono: tel });
+            if (respuesta.error) {
+                document.querySelector("#resultado").textContent = "No se pudo guardar. Intente de nuevo";
 
+            } else { document.querySelector("#resultado").textContent = "Cliente guardado con exito  " }
         });
     </script>
 </body>
