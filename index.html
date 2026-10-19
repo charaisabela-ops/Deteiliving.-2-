@@ -80,12 +80,15 @@
             const tel = document.querySelector("#tel").value;
 
             const respuesta = await db.from("clientes").insert({ nombre: nombre, correo: email, telefono: tel }).select();
+            console.log(respuesta);
 
             if (respuesta.error) {
                 document.querySelector("#resultado").textContent = "No se pudo guardar. Intente de nuevo";
             } else {
                 const clienteId = respuesta.data[0].id;
-                document.querySelector("#resultado").textContent = "Cliente guardado con el número " + clienteId;
+                const usuario = await db.auth.getUser();
+                const asesor = usuario.data.user.email;
+                document.querySelector("#resultado").textContent = "Cliente guardado con el número " + clienteId + " por " + asesor;
             }
         });
     </script>
